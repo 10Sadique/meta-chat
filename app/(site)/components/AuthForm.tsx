@@ -1,6 +1,8 @@
 'use client';
+
 import React, { useCallback, useState } from 'react';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import Input from '@/app/components/inputs/Input';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -46,7 +48,20 @@ const AuthForm = () => {
         // NextAuth Social SignIn
     };
 
-    return <div>Auth Form!</div>;
+    return (
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div className="px-4 py-8 bg-white rounded-lg shadow-md sm:px-10">
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                    <Input
+                        id="email"
+                        label="Email"
+                        register={register}
+                        errors={errors}
+                    />
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default AuthForm;
