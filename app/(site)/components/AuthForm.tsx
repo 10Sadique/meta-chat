@@ -56,11 +56,11 @@ const AuthForm = () => {
             })
                 .then((callback) => {
                     if (callback?.error) {
-                        toast.error('Invalid credentials');
+                        toast.error('Invalid credentials ⛔');
                     }
 
                     if (callback?.ok && !callback?.error) {
-                        toast.success('Logged in');
+                        toast.success('Logged in ✅');
                     }
                 })
                 .finally(() => setIsLoading(false));
@@ -71,6 +71,17 @@ const AuthForm = () => {
         setIsLoading(true);
 
         // NextAuth Social SignIn
+        signIn(action, { redirect: false })
+            .then((callback) => {
+                if (callback?.error) {
+                    toast.error('Invalid credentials ⛔');
+                }
+
+                if (callback?.ok && !callback?.error) {
+                    toast.success('Logged in ✅');
+                }
+            })
+            .finally(() => setIsLoading(false));
     };
 
     return (
