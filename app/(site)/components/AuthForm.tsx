@@ -54,6 +54,7 @@ const AuthForm = () => {
             // Axios Register
             axios
                 .post(`/api/register`, data)
+                .then(() => signIn('credentials', data))
                 .catch(() => toast.error('Something went worng.'))
                 .finally(() => setIsLoading(false));
         }
@@ -66,11 +67,12 @@ const AuthForm = () => {
             })
                 .then((callback) => {
                     if (callback?.error) {
-                        toast.error('Invalid credentials ⛔');
+                        toast.error('Invalid credentials!');
                     }
 
                     if (callback?.ok && !callback?.error) {
-                        toast.success('Logged in ✅');
+                        toast.success('Logged in!');
+                        router.push('/users');
                     }
                 })
                 .finally(() => setIsLoading(false));
@@ -84,11 +86,12 @@ const AuthForm = () => {
         signIn(action, { redirect: false })
             .then((callback) => {
                 if (callback?.error) {
-                    toast.error('Invalid credentials ⛔');
+                    toast.error('Invalid credentials!');
                 }
 
                 if (callback?.ok && !callback?.error) {
-                    toast.success('Logged in ✅');
+                    toast.success('Logged in!');
+                    router.push('/users');
                 }
             })
             .finally(() => setIsLoading(false));
