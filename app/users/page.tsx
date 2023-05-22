@@ -1,5 +1,3 @@
-import React from 'react';
-
 import EmptyState from '@/app/components/EmptyState';
 
 const Users = () => {
