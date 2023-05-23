@@ -19,7 +19,8 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
     const [items, setItems] = useState(initialItems);
     const router = useRouter();
 
-    const { convarsationId, isOpen } = useConversation();
+    const { conversationId, isOpen } = useConversation();
+    console.log(isOpen);
 
     return (
         <aside
@@ -41,7 +42,7 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
                     <ConversationBox
                         key={item.id}
                         data={item}
-                        selected={convarsationId === item.id}
+                        selected={conversationId === item.id}
                     />
                 ))}
             </div>
