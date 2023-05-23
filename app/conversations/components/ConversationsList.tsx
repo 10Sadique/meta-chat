@@ -20,7 +20,6 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
     const router = useRouter();
 
     const { conversationId, isOpen } = useConversation();
-    console.log(isOpen);
 
     return (
         <aside
