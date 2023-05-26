@@ -38,6 +38,30 @@ export async function POST(requset: Request) {
                 sender: true,
             },
         });
+
+        const updateConversation = await prisma.conversation.update({
+            where: {
+                id: conversationId,
+            },
+            data: {
+                lastMessageAt: new Date(),
+                messages: {
+                    connect: {
+                        id: newMessage.id,
+                    },
+                },
+            },
+            include: {
+                users: true,
+                messages: {
+                    include: {
+                        seen: true,
+                    },
+                },
+            },
+        });
+
+        return NextResponse.json(newMessage);
     } catch (error: any) {
         console.log(error, 'ERROR_MESSAGE');
         return new NextResponse('Internal Error', { status: 500 });

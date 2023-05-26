@@ -60,7 +60,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         }
 
         if (lastMessage?.body) {
-            return lastMessage.body;
+            return lastMessage?.body;
         }
 
         return 'Start a conversation';
@@ -78,7 +78,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
             <div className="flex-1 min-w-0">
                 <div className="focus:outline-none">
                     <div className="flex items-center justify-between mb-1">
-                        <p className="font-medium text-gray-900 text-md">
+                        <p className="text-sm font-medium text-gray-900">
                             {data.name || otherUser.name}
                         </p>
                         {lastMessage?.createdAt && (
@@ -89,8 +89,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                     </div>
                     <p
                         className={clsx(
-                            'truncate text-sm',
-                            hasSeen ? 'text-gray-50' : 'text-black font-medium'
+                            'truncate text-xs',
+                            hasSeen ? 'text-gray-500' : 'text-black font-medium'
                         )}
                     >
                         {lastMessageText}
